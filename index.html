@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suisse Romande - D'une Colline à l'Autre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2d5a4c;
+            --text-dark: #1a1a1a;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            background-color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: white;
+        }
+
+        .logo { font-weight: 700; font-size: 1.2rem; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 25px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?auto=format&fit=crop&q=80&w=2000') no-repeat center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .content-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            color: #888;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        h2 { font-size: 2.5rem; margin-top: 10px; }
+
+        /* Grid for Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 50px 10%;
+            background: var(--bg-light);
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .card h3 { color: var(--primary-green); }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🇨🇭 Suisse Romande</div>
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#">Événements</a>
+            <a href="#">Nous Rejoindre</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p>ASSOCIATION HONG KONG - SUISSE ROMANDE</p>
+        <h1>D'une Colline à l'Autre</h1>
+        <a href="#" class="btn">DÉCOUVRIR NOS ÉVÉNEMENTS</a>
+    </header>
+
+    <section class="content-section">
+        <div>
+            <p class="section-tag">NOTRE HISTOIRE</p>
+            <h2>Deux cultures, une communauté</h2>
+            <p>Notre association rassemble les familles hongkongaises établies en Suisse Romande. Nous créons des espaces de rencontres où traditions, langue et expériences se partagent librement.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1511108690759-009324a90311?auto=format&fit=crop&q=80&w=1000" alt="Culture">
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3>Culture & Patrimoine</h3>
+            <p>Célébrer les fêtes traditionnelles et partager la gastronomie.</p>
+        </div>
+        <div class="card">
+            <h3>Langue & Éducation</h3>
+            <p>Cours de cantonais et ressources pour préserver l'héritage linguistique.</p>
+        </div>
+        <div class="card">
+            <h3>Communauté & Soutien</h3>
+            <p>Un réseau d'entraide pour les familles arrivantes.</p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Hong Kong - Suisse Romande. Tous droits réservés.
+    </footer>
+
+</body>
+</html>
