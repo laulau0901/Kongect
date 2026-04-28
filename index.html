@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suisse Romande - D'une Colline à l'Autre</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-green: #2d5a4c;
-            --text-dark: #1a1a1a;
-            --bg-light: #f9f9f9;
+            --light-gray: #f5f5f7;
+            --border-color: #e5e5e5;
+            --text-main: #1d1d1f;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            color: var(--text-dark);
-            background-color: white;
-            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #fff;
+            line-height: 1.5;
         }
 
         /* Navigation */
@@ -25,92 +27,139 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
+            padding: 20px 8%;
+            position: sticky;
+            top: 0;
             background: white;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo { font-weight: 700; font-size: 1.2rem; }
-
+        .logo { font-weight: 700; font-size: 1.1rem; }
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
-            margin-left: 25px;
-            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-left: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         /* Hero Section */
         .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
-                        url('https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?auto=format&fit=crop&q=80&w=2000') no-repeat center/cover;
+            padding: 100px 8%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&q=80&w=2000') no-repeat center/cover;
+            color: white;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
         }
 
-        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+        .hero p { max-width: 500px; margin-bottom: 30px; font-size: 1.1rem; }
 
+        .btn-group { display: flex; gap: 15px; }
         .btn {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 12px 30px;
+            padding: 12px 24px;
+            border-radius: 6px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-primary { background: var(--primary-green); color: white; }
+        .btn-outline { border: 1px solid white; color: white; }
+
+        /* Section Styling */
+        section { padding: 80px 8%; }
+        .section-label { text-transform: uppercase; color: #86868b; font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; }
+        h2 { font-size: 2.2rem; margin: 10px 0 40px 0; }
+
+        /* Join Us Grid */
+        .join-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        /* Content Section */
-        .content-section {
-            padding: 80px 10%;
+        .join-card {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .join-card:hover { border-color: var(--primary-green); }
+        .join-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .join-card p { font-size: 0.85rem; color: #6e6e73; }
+
+        /* Form Styling */
+        .form-container {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+        }
+
+        .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            gap: 20px;
         }
 
-        .content-section img {
+        .form-group { margin-bottom: 20px; }
+        .form-group.full { grid-column: span 2; }
+
+        label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; }
+        input, textarea {
             width: 100%;
+            padding: 12px;
+            border: 1px solid #d2d2d7;
             border-radius: 8px;
+            font-family: inherit;
         }
 
-        .section-tag {
-            text-transform: uppercase;
-            color: #888;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        h2 { font-size: 2.5rem; margin-top: 10px; }
-
-        /* Grid for Cards */
-        .features {
+        /* Event Cards */
+        .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 50px 10%;
-            background: var(--bg-light);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .card {
+        .event-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .card h3 { color: var(--primary-green); }
+        .event-img { height: 200px; background: #eee; position: relative; }
+        .event-date {
+            position: absolute; top: 15px; left: 15px;
+            background: white; padding: 5px 10px; border-radius: 5px;
+            font-weight: 700; text-align: center;
+        }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.8rem;
-            color: #666;
+        .event-content { padding: 20px; }
+        .event-content h3 { margin-bottom: 10px; font-size: 1.1rem; }
+        .event-content p { font-size: 0.85rem; color: #6e6e73; margin-bottom: 20px; }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .form-grid, .join-grid, .footer { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -119,44 +168,118 @@
     <nav>
         <div class="logo">🇨🇭 Suisse Romande</div>
         <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#">Événements</a>
-            <a href="#">Nous Rejoindre</a>
+            <a href="#home">Accueil</a>
+            <a href="#events">Événements</a>
+            <a href="#join">Nous Rejoindre</a>
         </div>
     </nav>
 
-    <header class="hero">
-        <p>ASSOCIATION HONG KONG - SUISSE ROMANDE</p>
-        <h1>D'une Colline à l'Autre</h1>
-        <a href="#" class="btn">DÉCOUVRIR NOS ÉVÉNEMENTS</a>
+    <header class="hero" id="home">
+        <p class="section-label" style="color: white;">Association Hong Kong - Suisse Romande</p>
+        <h1>D'une Colline <br> à l'Autre</h1>
+        <p>Connecter les familles hongkongaises de Suisse Romande à travers la culture, la langue et le partage.</p>
+        <div class="btn-group">
+            <a href="#events" class="btn btn-primary">DÉCOUVRIR NOS ÉVÉNEMENTS</a>
+            <a href="#join" class="btn btn-outline">NOUS REJOINDRE</a>
+        </div>
     </header>
 
-    <section class="content-section">
+    <section id="join">
+        <p class="section-label">Portail d'alliance</p>
+        <h2>Nous Rejoindre</h2>
+        
+        <p style="margin-bottom: 20px;">Qu'est-ce qui vous amène aux collines ? Partagez votre intérêt.</p>
+        
+        <div class="join-grid">
+            <div class="join-card">
+                <h3>Patrimoine</h3>
+                <p>Culture et traditions locales</p>
+            </div>
+            <div class="join-card">
+                <h3>Langue</h3>
+                <p>Apprendre le cantonais</p>
+            </div>
+            <div class="join-card">
+                <h3>Soutien</h3>
+                <p>Entraide communautaire</p>
+            </div>
+            <div class="join-card">
+                <h3>Célébration</h3>
+                <p>Fêtes et événements</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form action="#">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nom complet *</label>
+                        <input type="text" placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="votre@email.ch">
+                    </div>
+                    <div class="form-group full">
+                        <label>Ville en Suisse Romande</label>
+                        <input type="text" placeholder="Lausanne, Genève, Fribourg...">
+                    </div>
+                    <div class="form-group full">
+                        <label>Message</label>
+                        <textarea rows="4" placeholder="Dites-nous en plus..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">ENVOYER MA DEMANDE</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="events" style="background-color: var(--light-gray);">
+        <p class="section-label">Calendrier Culturel</p>
+        <h2>Nos Événements</h2>
+
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-img" style="background: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=60&w=500') center/cover;">
+                    <div class="event-date">15<br><small>AVR</small></div>
+                </div>
+                <div class="event-content">
+                    <h3>Nouvel An Lunaire</h3>
+                    <p>Célébration traditionnelle avec performances et repas communautaire.</p>
+                    <a href="#" class="btn btn-primary" style="font-size: 0.7rem;">S'INSCRIRE</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-img" style="background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=60&w=500') center/cover;">
+                    <div class="event-date">05<br><small>MAI</small></div>
+                </div>
+                <div class="event-content">
+                    <h3>Atelier Dim Sum</h3>
+                    <p>Apprenez à préparer des plats authentiques avec nos chefs locaux.</p>
+                    <a href="#" class="btn btn-primary" style="font-size: 0.7rem;">S'INSCRIRE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
         <div>
-            <p class="section-tag">NOTRE HISTOIRE</p>
-            <h2>Deux cultures, une communauté</h2>
-            <p>Notre association rassemble les familles hongkongaises établies en Suisse Romande. Nous créons des espaces de rencontres où traditions, langue et expériences se partagent librement.</p>
+            <h3>ASSOCIATION</h3>
+            <p style="font-size: 0.8rem; margin-top: 15px; color: #86868b;">Connecter les familles hongkongaises de Suisse Romande à travers la culture et le partage.</p>
         </div>
-        <img src="https://images.unsplash.com/photo-1511108690759-009324a90311?auto=format&fit=crop&q=80&w=1000" alt="Culture">
-    </section>
-
-    <section class="features">
-        <div class="card">
-            <h3>Culture & Patrimoine</h3>
-            <p>Célébrer les fêtes traditionnelles et partager la gastronomie.</p>
+        <div>
+            <h3>NAVIGATION</h3>
+            <ul style="list-style: none; font-size: 0.8rem; margin-top: 15px;">
+                <li>Accueil</li>
+                <li>Événements</li>
+                <li>Nous rejoindre</li>
+            </ul>
         </div>
-        <div class="card">
-            <h3>Langue & Éducation</h3>
-            <p>Cours de cantonais et ressources pour préserver l'héritage linguistique.</p>
+        <div>
+            <h3>CONTACT</h3>
+            <p style="font-size: 0.8rem; margin-top: 15px; color: #86868b;">info@suisseromande.ch</p>
         </div>
-        <div class="card">
-            <h3>Communauté & Soutien</h3>
-            <p>Un réseau d'entraide pour les familles arrivantes.</p>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2026 Hong Kong - Suisse Romande. Tous droits réservés.
     </footer>
 
 </body>
